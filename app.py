@@ -17,11 +17,10 @@ app = Flask(__name__)
 
 # Load default config and override config from an environment variable
 app.config.update(dict(
-    DATABASE=os.path.join(app.root_path, 'flaskr.db'),
     DEBUG=True,
-    SECRET_KEY='development key',
+    SECRET_KEY='wheee this is a super secret key!',
     USERNAME='admin',
-    PASSWORD='default'
+    PASSWORD='password'
 ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
@@ -34,7 +33,9 @@ app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 @app.route('/')
 def show_entries():
     # Query the db for all posts
-#    posts = ???
+    posts = [{"title": "Example", "text": "Change this to something that \
+    actually queries the database! Then you can have multiple posts..."}]
+#    posts = "Put your posts here"
     return render_template('index.html', posts=posts)
 
 
